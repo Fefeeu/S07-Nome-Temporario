@@ -1,0 +1,336 @@
+{
+  "info": {
+    "_postman_id": "a5161b57-ce14-4b18-88a4-57775ac944f0",
+    "name": "Projeto S07",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53436805",
+    "_collection_link": "https://go.postman.co/collection/53436805-a5161b57-ce14-4b18-88a4-57775ac944f0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Basket",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Equipamento Basket possui campos obrigatorios\", function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    pm.expect(resposta.name).to.equal(\"Basket\");\r",
+              "    pm.expect(resposta.index).to.equal(\"basket\");\r",
+              "    pm.expect(resposta.url).to.equal(\"/api/2014/equipment/basket\")\r",
+              "    pm.expect(resposta.equipment_category).that.is.not.empty;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Campo cost possui tipos corretos\", function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    pm.expect(resposta.cost.quantity).to.be.a(\"number\");\r",
+              "    pm.expect(resposta.cost.unit).to.be.a(\"string\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Arma deve possuir categoria de arma\", function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    pm.expect(resposta.equipment_category.index).to.equal(\"adventuring-gear\");\r",
+              "    pm.expect(resposta.equipment_category.name).to.equal(\"Adventuring Gear\");\r",
+              "    pm.expect(resposta.equipment_category.url).to.equal(\"/api/2014/equipment-categories/adventuring-gear\");\r",
+              "    \r",
+              "});\r",
+              "\r",
+              "pm.test(\"Weight deve ser um numero maior que zero\", function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    const valor = resposta.weight;\r",
+              "    pm.expect(resposta.weight).to.be.a(\"number\");\r",
+              "    pm.expect(valor).above(0);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Tempo de resposta é menos de 1s\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});    "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/equipment/basket",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "equipment",
+            "basket"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Equipment",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Esse teste vai dar certo se eu quiser testar o /equipment/ e não o /basket\r",
+              "pm.test('Cada item da lista deve ter nome e URL', function () {\r",
+              "    const resposta = pm.response.json();\r",
+              "    resposta.results.forEach(function (equipment) {\r",
+              "        pm.expect(equipment).to.have.property('name');\r",
+              "        pm.expect(equipment).to.have.property('url');\r",
+              "        pm.expect(equipment.name).to.be.a('string').that.is.not.empty;\r",
+              "    });\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Tempo de resposta é menos de 1s\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "packages": {},
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/equipment/",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "equipment",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Erro",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status deve ser 404\", function () {\r",
+              "    pm.response.to.have.status(404);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Tempo de resposta é menos de 1s\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/equipment/banana",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "equipment",
+            "banana"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ChainMail",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Armor deve possuir categoria de armor\", function () {\r",
+              "    const resposta = pm.response.json();\r",
+              "    pm.expect(resposta.equipment_category.index).to.equal(\"armor\");\r",
+              "    pm.expect(resposta.equipment_category.name).to.equal(\"Armor\");\r",
+              "    pm.expect(resposta.equipment_category.url).to.equal(\"/api/2014/equipment-categories/armor\");\r",
+              "});\r",
+              "pm.test(\"Desvantagem em stealth condiz com o tipo de armadura\", function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    const categoria = resposta.armor_category;\r",
+              "    if(categoria === \"Heavy\"){\r",
+              "        pm.expect(resposta.stealth_disadvantage).to.equal(true);\r",
+              "    }\r",
+              "    else if(categoria === \"Light\"){\r",
+              "        pm.expect(resposta.stealth_disadvantage).to.equal(false);\r",
+              "    }\r",
+              "    else {\r",
+              "        pm.expect.fail(`Categoria de armadura desconhecida: ${categoria}`);\r",
+              "    }\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Tempo de resposta é menos de 1s\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/equipment/chain-mail",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "equipment",
+            "chain-mail"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LeatherArmor",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Armor deve possuir categoria de armor\", function () {\r",
+              "    const resposta = pm.response.json();\r",
+              "    pm.expect(resposta.equipment_category.index).to.equal(\"armor\");\r",
+              "    pm.expect(resposta.equipment_category.name).to.equal(\"Armor\");\r",
+              "    pm.expect(resposta.equipment_category.url).to.equal(\"/api/2014/equipment-categories/armor\");\r",
+              "});\r",
+              "pm.test(\"Desvantagem em stealth condiz com o tipo de armadura\", function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    const categoria = resposta.armor_category;\r",
+              "    if(categoria === \"Heavy\"){\r",
+              "        pm.expect(resposta.stealth_disadvantage).to.equal(true);\r",
+              "    }\r",
+              "    else if(categoria === \"Light\"){\r",
+              "        pm.expect(resposta.stealth_disadvantage).to.equal(false);\r",
+              "    }\r",
+              "    else {\r",
+              "        pm.expect.fail(`Categoria de armadura desconhecida: ${categoria}`);\r",
+              "    }\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Leather Armor possui peso fixo\", function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    pm.expect(resposta.weight).to.equal(10);\r",
+              "    pm.expect(resposta.weight).to.be.a(\"number\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Tempo de resposta é menos de 1s\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/equipment/leather-armor",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "equipment",
+            "leather-armor"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Longsword",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Dano base da Longsowrd\", function () {\r",
+              "    const resposta = pm.response.json();\r",
+              "    const dano = resposta.damage;\r",
+              "    pm.expect(dano.damage_dice).to.equal(\"1d8\");\r",
+              "    pm.expect(dano.damage_type.index).to.equal(\"slashing\");\r",
+              "    pm.expect(dano.damage_type.name).to.equal(\"Slashing\");\r",
+              "    pm.expect(dano.damage_type.url).to.equal(\"/api/2014/damage-types/slashing\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Propriedades da Lonsowrd\", function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    const properties = resposta.properties;\r",
+              "\r",
+              "    const indexes = properties.map(p => p.index);\r",
+              "    pm.expect(indexes).to.include(\"versatile\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Teste pras duas maos\",function(){\r",
+              "    const resposta = pm.response.json();\r",
+              "    const duasMaos = resposta.two_handed_damage;\r",
+              "    pm.expect(duasMaos.damage_dice).to.equal(\"1d10\")\r",
+              "    pm.expect(duasMaos.damage_type.index).to.equal(\"slashing\");\r",
+              "    pm.expect(duasMaos.damage_type.name).to.equal(\"Slashing\");\r",
+              "    pm.expect(duasMaos.damage_type.url).to.equal(\"/api/2014/damage-types/slashing\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Tempo de resposta é menos de 1s\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/equipment/longsword",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "equipment",
+            "longsword"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
