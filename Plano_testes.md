@@ -2,7 +2,7 @@
 # Plano de Testes — D&D 5th Edition API
 --- 
 *Disciplina: Qualidade e Gerência de Produto de Software | Ferramenta: Postman | Data: Março/2026*
-*Alunos: preguica*
+*Alunos: Felipe Silva Loschi, Felipe Ferreira, Guilherme Emergente e Pedro Henrique*
 
 ## 1. Escopo 
 ---
@@ -95,6 +95,26 @@ Foram utilizadas as seguintes tecnologias
 | TC-040 | Formato de erro (HTML) | Endpoint de leitura | POST /monsters/monstro_exemplo | Verificar Header Content-Type | O tipo de conteúdo deve ser text/html |
 | TC-041 | Mensagem de erro de método | Endpoint de leitura | POST /monsters/monstro_exemplo | Verificar corpo da resposta | "Deve conter o texto ""Cannot POST /api/ |2014/monsters"""
 | TC-043 | Método DELETE não permitido | Endpoint de leitura | DELETE /monsters/aboleth | Tentar deletar um monstro | Status Code deve ser 404 ou 405 |
+| TC-044 | Equipamento Basket possui campos obrigatórios | API online e acessível | index: basket | GET /api/2014/equipment/basket | Campos name, index, url e equipment_category presentes e corretos |
+| TC-045 | Campo cost possui tipos corretos | API online e acessível | index: basket | GET /api/2014/equipment/basket | cost.quantity é number e cost.unit é string |
+| TC-046 | Basket deve possuir categoria adventuring-gear | API online e acessível | index: basket | GET /api/2014/equipment/basket | equipment_category.index igual a "adventuring-gear" |
+| TC-047 | Weight deve ser um número maior que zero | API online e acessível | index: basket | GET /api/2014/equipment/basket | weight é number e maior que 0 |
+| TC-048 | Tempo de resposta é menos de 1s | API online e acessível | index: basket | GET /api/2014/equipment/basket | responseTime abaixo de 1000ms |
+| TC-049 | Cada item da lista deve ter nome e URL | API online e acessível | — | GET /api/2014/equipment/ | Todos os itens em results possuem name (string não vazia) e url |
+| TC-050 | Tempo de resposta é menos de 1s | API online e acessível | — | GET /api/2014/equipment/ | responseTime abaixo de 1000ms |
+| TC-051 | Status deve ser 404 para equipamento inexistente | API online e acessível | index: banana | GET /api/2014/equipment/banana | Status Code 404 |
+| TC-052 | Tempo de resposta é menos de 1s | API online e acessível | index: banana | GET /api/2014/equipment/banana | responseTime abaixo de 1000ms |
+| TC-053 | Chain Mail deve possuir categoria de armor | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | equipment_category.index igual a "armor" |
+| TC-054 | Desvantagem em stealth condiz com o tipo de armadura | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | Heavy: stealth_disadvantage true / Light: stealth_disadvantage false |
+| TC-055 | Tempo de resposta é menos de 1s | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | responseTime abaixo de 1000ms |
+| TC-056 | Leather Armor deve possuir categoria de armor | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | equipment_category.index igual a "armor" |
+| TC-057 | Desvantagem em stealth condiz com o tipo de armadura | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | Heavy: stealth_disadvantage true / Light: stealth_disadvantage false |
+| TC-058 | Leather Armor possui peso fixo | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | weight igual a 10 e é number |
+| TC-059 | Tempo de resposta é menos de 1s | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | responseTime abaixo de 1000ms |
+| TC-060 | Dano base da Longsword | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | damage_dice igual a "1d8" e damage_type.index igual a "slashing" |
+| TC-061 | Longsword possui propriedade versatile | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | Array properties contém objeto com index "versatile" |
+| TC-062 | Dano com duas mãos da Longsword | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | two_handed_damage.damage_dice igual a "1d10" e damage_type.index igual a "slashing" |
+| TC-063 | Tempo de resposta é menos de 1s | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | responseTime abaixo de 1000ms |
 
 ## 6. Critérios de Aceite
 ---
