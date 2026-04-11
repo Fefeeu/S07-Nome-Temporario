@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "78579f9e-3904-4735-820e-4148dd78fa02",
+    "name": "d&d spells tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53398917",
+    "_collection_link": "https://go.postman.co/collection/53398917-78579f9e-3904-4735-820e-4148dd78fa02?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Busca spells por nome  (acid-arrow)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// ---------  Testes positivos --------------\r",
+              "// Teste de status\r",
+              "pm.test(\"TC-009: Status code é 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "// Teste de regras de negócio\r",
+              "pm.test(\"TC-010: Dano de magia no level 2 é 4d4\", function () {\r",
+              "    pm.expect(pm.response.json().damage.damage_at_slot_level).to.have.property('2');\r",
+              "    pm.expect(pm.response.json().damage.damage_at_slot_level['2']).to.equal('4d4');\r",
+              "});\r",
+              "\r",
+              "pm.test(\"TC-011: Mago deve ser capaz de utilizar a magia\", function () {\r",
+              "    const resposta = pm.response.json();\r",
+              "    const temWizard = resposta.classes.some(c => c.index === \"wizard\");\r",
+              "    pm.expect(temWizard).to.be.true;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"TC-012: O dano deve aumentar a cada level\", function () {\r",
+              "    const danoPorNivel = pm.response.json().damage.damage_at_slot_level;\r",
+              "\r",
+              "    for (let i = 3; i <=9; i++){\r",
+              "        const danoAtual = parseInt(danoPorNivel[i].split('d')[0]);\r",
+              "        const danoAnterior = parseInt(danoPorNivel[i - 1].split('d')[0]);\r",
+              "\r",
+              "        pm.expect(danoAtual).to.be.greaterThan(danoAnterior);\r",
+              "    }\r",
+              "});\r",
+              "\r",
+              "pm.test(\"TC-013: Tamanho da lista de nível é igual a 8 (level 2 ao 9)\", function(){\r",
+              "    const resposta = pm.response.json()\r",
+              "    pm.expect(Object.keys(resposta.damage.damage_at_slot_level)).to.have.lengthOf(8);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"TC-014: Maior nível de magia é 9\", function () {\r",
+              "    pm.expect(pm.response.json().damage.damage_at_slot_level).to.have.property('9');\r",
+              "});\r",
+              "\r",
+              "pm.test(\"TC-015: O dano deve aumentar de 1d4 a cada nível\", function() {\r",
+              "    const danoPorNivel = pm.response.json().damage.damage_at_slot_level\r",
+              "\r",
+              "    for (let i = 3; i <= 9; i++) {\r",
+              "        const danoAtual = parseInt(danoPorNivel[i].split('d')[0]);\r",
+              "        const danoAnterior = parseInt(danoPorNivel[i - 1].split('d')[0]);\r",
+              "\r",
+              "        pm.expect(danoAtual).to.be.greaterThan(danoAnterior)\r",
+              "    }\r",
+              "});\r",
+              "\r",
+              "pm.test(\"TC-016: Campos devem retornar uma url válida\", function () {\r",
+              "    const resposta = pm.response.json()\r",
+              "    const tipoDeDano = resposta.damage.damage_type.url;\r",
+              "    const school = resposta.school.url;\r",
+              "    const classes = resposta.classes.map(c => c.url);\r",
+              "    const subclasses = resposta.subclasses.map(c => c.url);\r",
+              "\r",
+              "    const urls = [...classes, ...subclasses, school, tipoDeDano];\r",
+              "\r",
+              "    // captura se a url começa com /api/2014/\"qualquer valor, mas sem /\" /\"qualquer valor mas sem /\" fim da string\r",
+              "    urls.forEach(url => {\r",
+              "        pm.expect(url).to.match(/^\\/api\\/2014\\/[^\\/]+\\/[^\\/]+$/);\r",
+              "    });\r",
+              "});\r",
+              "\r",
+              "// ---------- Testes negativos -----------------------\r",
+              "\r",
+              "// teste de regras de negócio \r",
+              "pm.test(\"TC-017: Classes diferentes de mago não podem usar a magia\", function () {\r",
+              "    const resposta = pm.response.json()\r",
+              "    const temCleric = resposta.classes.some(c => c.index === 'cleric');\r",
+              "\r",
+              "    pm.expect(temCleric).to.be.false;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"TC-018: O casting time não deve ser maior do que 1 turno\", function() {\r",
+              "    const casting = pm.response.json().casting_time;\r",
+              "    const turno = parseInt(casting.split(\" \")[0]);\r",
+              "\r",
+              "    pm.expect(turno).not.to.be.greaterThan(1);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"TC-019: O range não deve ser maior do que 90 feet\", function() {\r",
+              "    const range = pm.response.json().range;\r",
+              "    const feet = parseInt(range.split(\" \")[0]);\r",
+              "\r",
+              "    pm.expect(feet).not.to.be.greaterThan(90);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL}}spells/acid-arrow/",
+          "host": [
+            "{{baseURL}}spells"
+          ],
+          "path": [
+            "acid-arrow",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Busca spells por nome (animate-dead)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
