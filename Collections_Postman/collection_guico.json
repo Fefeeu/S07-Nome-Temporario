@@ -1,11 +1,11 @@
 {
   "info": {
-    "_postman_id": "686930cf-e1be-4727-84b3-be91d5c0c028",
+    "_postman_id": "3acc32fe-f4f1-4fbc-a2a9-375c5a049898",
     "name": "My Collection Copy",
     "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "48550714",
-    "_collection_link": "https://go.postman.co/collection/48550714-686930cf-e1be-4727-84b3-be91d5c0c028?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/48550714-3acc32fe-f4f1-4fbc-a2a9-375c5a049898?source=collection_link"
   },
   "item": [
     {
@@ -380,6 +380,44 @@
                 "2014",
                 "classes",
                 "bloodhunter"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "timeout",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"TC-084 Tempo de resposta entre 100ms e 1000ms\", function () {\r",
+                  "    let tempo = pm.response.responseTime;\r",
+                  "    pm.expect(tempo).to.be.within(100, 1000);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://www.dnd5eapi.co/api/2014/classes",
+              "protocol": "https",
+              "host": [
+                "www",
+                "dnd5eapi",
+                "co"
+              ],
+              "path": [
+                "api",
+                "2014",
+                "classes"
               ]
             }
           },
