@@ -1,6 +1,30 @@
 # S07 Testes de End-Points da D&D 5th Edition API
 
-texto, texto, texto...
+## Instalação e Execução
+ 
+### Pré-requisitos
+ 
+- [Postman](https://www.postman.com/downloads/) instalado (versão 12 ou superior)
+- Conexão com a internet (a API é pública e não requer autenticação)
+ 
+### Importando a Collection
+ 
+1. No postman, clique em **Import** no canto superior esquerdo
+2. Selecione o arquivo `.json` da collection deste repositório
+3. A collection **nome collection** aparecerá no painel lateral
+
+### Executando os testes
+ 
+**Requisição individual:**
+1. No painel lateral, selecione qualquer requisição
+2. Clique em **Send** para eexcutá-la
+3. Os resultados dos testes aparecem na aba **Test Results** na parte inferior
+ 
+**Rodando todos os testes de uma vez:**
+1. Clique com o botão direito na collection
+2. Selecione **Run collection**
+3. Clique em **Run nome aí**
+4. O relatório completo com passou/falhou será exibido ao final
 
 # Plano de Testes — D&D 5th Edition API
 --- 
