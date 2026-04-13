@@ -138,6 +138,8 @@ Foram utilizadas as seguintes tecnologias
 | TC-081 | Fighter deve possuir proficiency all-armor | API online e acessível | index: fighter | GET /api/2014/classes/fighter | Existe proficiency com index "all-armor" |
 | TC-082 | Fighter não deve conter saving throws inválidos | API online e acessível | index: fighter | GET /api/2014/classes/fighter | saving_throws não contém "dex", "int", "wis", "cha" |
 | TC-083 | Classe inexistente deve retornar 404 | API online e acessível | index: bloodhunter | GET /api/2014/classes/bloodhunter | Status igual a 404 |
+| TC-084 | Tempo de resposta entre 100 e 1000ms | API online e acessível | endpoint: /classes | GET /api/2014/classes | Tempo de resposta entre 100 e 1000ms |
+
 
 ## 6. Critérios de Aceite
 ---
