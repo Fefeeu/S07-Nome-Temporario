@@ -123,47 +123,50 @@ Foram utilizadas as seguintes tecnologias
 | TC-040 | Formato de erro (HTML) | Endpoint de leitura | POST /monsters/monstro_exemplo | Verificar Header Content-Type | O tipo de conteúdo deve ser text/html |
 | TC-041 | Mensagem de erro de método | Endpoint de leitura | POST /monsters/monstro_exemplo | Verificar corpo da resposta | "Deve conter o texto ""Cannot POST /api/ |2014/monsters"""
 | TC-043 | Método DELETE não permitido | Endpoint de leitura | DELETE /monsters/aboleth | Tentar deletar um monstro | Status Code deve ser 404 ou 405 |
-| TC-044 | Equipamento Basket possui campos obrigatórios | API online e acessível | index: basket | GET /api/2014/equipment/basket | Campos name, index, url e equipment_category presentes e corretos |
-| TC-045 | Campo cost possui tipos corretos | API online e acessível | index: basket | GET /api/2014/equipment/basket | cost.quantity é number e cost.unit é string |
-| TC-046 | Basket deve possuir categoria adventuring-gear | API online e acessível | index: basket | GET /api/2014/equipment/basket | equipment_category.index igual a "adventuring-gear" |
-| TC-047 | Weight deve ser um número maior que zero | API online e acessível | index: basket | GET /api/2014/equipment/basket | weight é number e maior que 0 |
-| TC-048 | Tempo de resposta é menos de 1s | API online e acessível | index: basket | GET /api/2014/equipment/basket | responseTime abaixo de 1000ms |
-| TC-049 | Cada item da lista deve ter nome e URL | API online e acessível | — | GET /api/2014/equipment/ | Todos os itens em results possuem name (string não vazia) e url |
-| TC-050 | Tempo de resposta é menos de 1s | API online e acessível | — | GET /api/2014/equipment/ | responseTime abaixo de 1000ms |
-| TC-051 | Status deve ser 404 para equipamento inexistente | API online e acessível | index: banana | GET /api/2014/equipment/banana | Status Code 404 |
-| TC-052 | Tempo de resposta é menos de 1s | API online e acessível | index: banana | GET /api/2014/equipment/banana | responseTime abaixo de 1000ms |
-| TC-053 | Chain Mail deve possuir categoria de armor | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | equipment_category.index igual a "armor" |
-| TC-054 | Desvantagem em stealth condiz com o tipo de armadura | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | Heavy: stealth_disadvantage true / Light: stealth_disadvantage false |
-| TC-055 | Tempo de resposta é menos de 1s | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | responseTime abaixo de 1000ms |
-| TC-056 | Leather Armor deve possuir categoria de armor | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | equipment_category.index igual a "armor" |
-| TC-057 | Desvantagem em stealth condiz com o tipo de armadura | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | Heavy: stealth_disadvantage true / Light: stealth_disadvantage false |
-| TC-058 | Leather Armor possui peso fixo | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | weight igual a 10 e é number |
-| TC-059 | Tempo de resposta é menos de 1s | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | responseTime abaixo de 1000ms |
-| TC-060 | Dano base da Longsword | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | damage_dice igual a "1d8" e damage_type.index igual a "slashing" |
-| TC-061 | Longsword possui propriedade versatile | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | Array properties contém objeto com index "versatile" |
-| TC-062 | Dano com duas mãos da Longsword | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | two_handed_damage.damage_dice igual a "1d10" e damage_type.index igual a "slashing" |
-| TC-063 | Tempo de resposta é menos de 1s | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | responseTime abaixo de 1000ms |
-| TC-064 | Status da requisição de todas as classes deve ser 200 | API online e acessível | endpoint: classes | GET /api/2014/classes | Status igual a 200 |
-| TC-065 | Contagem total de classes deve ser 12 | API online e acessível | endpoint: classes | GET /api/2014/classes | count igual a 12 |
-| TC-066 | Primeira classe deve ser barbarian | API online e acessível | endpoint: classes | GET /api/2014/classes | results[0].index igual a "barbarian" |
-| TC-067 | Cada classe deve conter apenas index, name e url | API online e acessível | endpoint: classes | GET /api/2014/classes | Cada item possui somente "index", "name" e "url" |
-| TC-068 | URL da classe deve terminar com seu index | API online e acessível | endpoint: classes | GET /api/2014/classes | Último segmento da URL igual ao index |
-| TC-069 | Classe cleric deve possuir spellcasting | API online e acessível | index: cleric | GET /api/2014/classes/cleric | Propriedade spellcasting existente |
-| TC-070 | Habilidade de spellcasting do cleric deve ser wisdom | API online e acessível | index: cleric | GET /api/2014/classes/cleric | spellcasting.spellcasting_ability.index igual a "wis" |
-| TC-071 | Cleric não deve possuir proficiency all-armor | API online e acessível | index: cleric | GET /api/2014/classes/cleric | Não existe proficiency com index "all-armor" |
-| TC-072 | Cleric não deve conter saving throws inválidos | API online e acessível | index: cleric | GET /api/2014/classes/cleric | saving_throws não contém "str", "dex", "con", "int" |
-| TC-073 | Método POST não deve ser permitido | API online e acessível | endpoint: artificer | POST /api/2014/artificer | Status 404 ou 405 |
-| TC-074 | Método DELETE não deve ser permitido | API online e acessível | index: cleric | DELETE /api/2014/classes/cleric | Status 404 ou 405 |
-| TC-075 | Status da classe barbarian deve ser 200 | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | Status igual a 200 |
-| TC-076 | Hit die deve estar entre 6 e 12 | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | hit_die entre 6 e 12 |
-| TC-077 | Classe deve conter subclasses | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | Propriedade subclasses existente |
-| TC-078 | Classe deve possuir dois saving throws | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | saving_throws com tamanho 2 |
-| TC-079 | proficiency_choices não deve ser vazio | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | proficiency_choices não vazio |
-| TC-080 | Fighter não deve possuir spellcasting | API online e acessível | index: fighter | GET /api/2014/classes/fighter | Propriedade spellcasting inexistente |
-| TC-081 | Fighter deve possuir proficiency all-armor | API online e acessível | index: fighter | GET /api/2014/classes/fighter | Existe proficiency com index "all-armor" |
-| TC-082 | Fighter não deve conter saving throws inválidos | API online e acessível | index: fighter | GET /api/2014/classes/fighter | saving_throws não contém "dex", "int", "wis", "cha" |
-| TC-083 | Classe inexistente deve retornar 404 | API online e acessível | index: bloodhunter | GET /api/2014/classes/bloodhunter | Status igual a 404 |
-| TC-084 | Tempo de resposta entre 100 e 1000ms | API online e acessível | endpoint: /classes | GET /api/2014/classes | Tempo de resposta entre 100 e 1000ms |
+| TC-044 | Validação de resposta HTML (DELETE) | Endpoint | DELETE /monsters/abolethVerificar | Header Content-TypeO tipo de conteúdo deve ser text/html | 
+| TC-045 | Mensagem de erro (DELETE) | Endpoint | DELETE /monsters/aboleth | Verificar corpo da respostaConter o texto "Cannot DELETE /api/2014/monsters" | 
+| TC-046 | Performance em erro de método | Endpoint | DELETE /monsters/aboleth | Verificar responseTimeTempo de resposta abaixo de 500m | 
+| TC-047 | Equipamento Basket possui campos obrigatórios | API online e acessível | index: basket | GET /api/2014/equipment/basket | Campos name, index, url e equipment_category presentes e corretos |
+| TC-048 | Campo cost possui tipos corretos | API online e acessível | index: basket | GET /api/2014/equipment/basket | cost.quantity é number e cost.unit é string |
+| TC-049 | Basket deve possuir categoria adventuring-gear | API online e acessível | index: basket | GET /api/2014/equipment/basket | equipment_category.index igual a "adventuring-gear" |
+| TC-050 | Weight deve ser um número maior que zero | API online e acessível | index: basket | GET /api/2014/equipment/basket | weight é number e maior que 0 |
+| TC-051 | Tempo de resposta é menos de 1s | API online e acessível | index: basket | GET /api/2014/equipment/basket | responseTime abaixo de 1000ms |
+| TC-052 | Cada item da lista deve ter nome e URL | API online e acessível | — | GET /api/2014/equipment/ | Todos os itens em results possuem name (string não vazia) e url |
+| TC-053 | Tempo de resposta é menos de 1s | API online e acessível | — | GET /api/2014/equipment/ | responseTime abaixo de 1000ms |
+| TC-054 | Status deve ser 404 para equipamento inexistente | API online e acessível | index: banana | GET /api/2014/equipment/banana | Status Code 404 |
+| TC-055 | Tempo de resposta é menos de 1s | API online e acessível | index: banana | GET /api/2014/equipment/banana | responseTime abaixo de 1000ms |
+| TC-056 | Chain Mail deve possuir categoria de armor | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | equipment_category.index igual a "armor" |
+| TC-057 | Desvantagem em stealth condiz com o tipo de armadura | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | Heavy: stealth_disadvantage true / Light: stealth_disadvantage false |
+| TC-058 | Tempo de resposta é menos de 1s | API online e acessível | index: chain-mail | GET /api/2014/equipment/chain-mail | responseTime abaixo de 1000ms |
+| TC-059 | Leather Armor deve possuir categoria de armor | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | equipment_category.index igual a "armor" |
+| TC-060 | Desvantagem em stealth condiz com o tipo de armadura | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | Heavy: stealth_disadvantage true / Light: stealth_disadvantage false |
+| TC-061 | Leather Armor possui peso fixo | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | weight igual a 10 e é number |
+| TC-062 | Tempo de resposta é menos de 1s | API online e acessível | index: leather-armor | GET /api/2014/equipment/leather-armor | responseTime abaixo de 1000ms |
+| TC-063 | Dano base da Longsword | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | damage_dice igual a "1d8" e damage_type.index igual a "slashing" |
+| TC-064 | Longsword possui propriedade versatile | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | Array properties contém objeto com index "versatile" |
+| TC-065 | Dano com duas mãos da Longsword | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | two_handed_damage.damage_dice igual a "1d10" e damage_type.index igual a "slashing" |
+| TC-066 | Tempo de resposta é menos de 1s | API online e acessível | index: longsword | GET /api/2014/equipment/longsword | responseTime abaixo de 1000ms |
+| TC-067 | Status da requisição de todas as classes deve ser 200 | API online e acessível | endpoint: classes | GET /api/2014/classes | Status igual a 200 |
+| TC-068 | Contagem total de classes deve ser 12 | API online e acessível | endpoint: classes | GET /api/2014/classes | count igual a 12 |
+| TC-069 | Primeira classe deve ser barbarian | API online e acessível | endpoint: classes | GET /api/2014/classes | results[0].index igual a "barbarian" |
+| TC-070 | Cada classe deve conter apenas index, name e url | API online e acessível | endpoint: classes | GET /api/2014/classes | Cada item possui somente "index", "name" e "url" |
+| TC-071 | URL da classe deve terminar com seu index | API online e acessível | endpoint: classes | GET /api/2014/classes | Último segmento da URL igual ao index |
+| TC-072 | Classe cleric deve possuir spellcasting | API online e acessível | index: cleric | GET /api/2014/classes/cleric | Propriedade spellcasting existente |
+| TC-073 | Habilidade de spellcasting do cleric deve ser wisdom | API online e acessível | index: cleric | GET /api/2014/classes/cleric | spellcasting.spellcasting_ability.index igual a "wis" |
+| TC-074 | Cleric não deve possuir proficiency all-armor | API online e acessível | index: cleric | GET /api/2014/classes/cleric | Não existe proficiency com index "all-armor" |
+| TC-075 | Cleric não deve conter saving throws inválidos | API online e acessível | index: cleric | GET /api/2014/classes/cleric | saving_throws não contém "str", "dex", "con", "int" |
+| TC-076 | Método POST não deve ser permitido | API online e acessível | endpoint: artificer | POST /api/2014/artificer | Status 404 ou 405 |
+| TC-077 | Método DELETE não deve ser permitido | API online e acessível | index: cleric | DELETE /api/2014/classes/cleric | Status 404 ou 405 |
+| TC-078 | Status da classe barbarian deve ser 200 | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | Status igual a 200 |
+| TC-079 | Hit die deve estar entre 6 e 12 | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | hit_die entre 6 e 12 |
+| TC-080 | Classe deve conter subclasses | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | Propriedade subclasses existente |
+| TC-081 | Classe deve possuir dois saving throws | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | saving_throws com tamanho 2 |
+| TC-082 | proficiency_choices não deve ser vazio | API online e acessível | index: barbarian | GET /api/2014/classes/barbarian | proficiency_choices não vazio |
+| TC-083 | Fighter não deve possuir spellcasting | API online e acessível | index: fighter | GET /api/2014/classes/fighter | Propriedade spellcasting inexistente |
+| TC-084 | Fighter deve possuir proficiency all-armor | API online e acessível | index: fighter | GET /api/2014/classes/fighter | Existe proficiency com index "all-armor" |
+| TC-085 | Fighter não deve conter saving throws inválidos | API online e acessível | index: fighter | GET /api/2014/classes/fighter | saving_throws não contém "dex", "int", "wis", "cha" |
+| TC-086 | Classe inexistente deve retornar 404 | API online e acessível | index: bloodhunter | GET /api/2014/classes/bloodhunter | Status igual a 404 |
+| TC-087 | Tempo de resposta entre 100 e 1000ms | API online e acessível | endpoint: /classes | GET /api/2014/classes | Tempo de resposta entre 100 e 1000ms |
 
 
 ## 6. Critérios de Aceitação
