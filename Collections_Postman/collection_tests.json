@@ -70,7 +70,7 @@
         "url": {
           "raw": "{{baseURL}}spells/animate-dead/",
           "host": [
-            "{{baseURL}}spells"
+            "{{baseURL}}/spells"
           ],
           "path": [
             "animate-dead",
@@ -203,7 +203,7 @@
         "url": {
           "raw": "{{baseURL}}spells/acid-arrow/",
           "host": [
-            "{{baseURL}}spells"
+            "{{baseURL}}/spells"
           ],
           "path": [
             "acid-arrow",
@@ -624,7 +624,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"TC-044 Equipamento Basket possui campos obrigatorios\", function(){\r",
+              "pm.test(\"TC-047 Equipamento Basket possui campos obrigatorios\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    pm.expect(resposta.name).to.equal(\"Basket\");\r",
               "    pm.expect(resposta.index).to.equal(\"basket\");\r",
@@ -632,27 +632,27 @@
               "    pm.expect(resposta.equipment_category).that.is.not.empty;\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-045 Campo cost possui tipos corretos\", function(){\r",
+              "pm.test(\"TC-048 Campo cost possui tipos corretos\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    pm.expect(resposta.cost.quantity).to.be.a(\"number\");\r",
               "    pm.expect(resposta.cost.unit).to.be.a(\"string\");\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-046 Arma deve possuir categoria de arma\", function(){\r",
+              "pm.test(\"TC-049 Arma deve possuir categoria de arma\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    pm.expect(resposta.equipment_category.index).to.equal(\"adventuring-gear\");\r",
               "    pm.expect(resposta.equipment_category.name).to.equal(\"Adventuring Gear\");\r",
               "    pm.expect(resposta.equipment_category.url).to.equal(\"/api/2014/equipment-categories/adventuring-gear\");\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-047 Weight deve ser um numero maior que zero\", function(){\r",
+              "pm.test(\"TC-050 Weight deve ser um numero maior que zero\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    const valor = resposta.weight;\r",
               "    pm.expect(resposta.weight).to.be.a(\"number\");\r",
               "    pm.expect(valor).above(0);\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-048 Tempo de resposta é menos de 1s\", function () {\r",
+              "pm.test(\"TC-051 Tempo de resposta é menos de 1s\", function () {\r",
               "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
               "});"
             ],
@@ -685,7 +685,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test('TC-049 Cada item da lista deve ter nome e URL', function () {\r",
+              "pm.test('TC-052 Cada item da lista deve ter nome e URL', function () {\r",
               "    const resposta = pm.response.json();\r",
               "    resposta.results.forEach(function (equipment) {\r",
               "        pm.expect(equipment).to.have.property('name');\r",
@@ -694,7 +694,7 @@
               "    });\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-050 Tempo de resposta é menos de 1s\", function () {\r",
+              "pm.test(\"TC-053 Tempo de resposta é menos de 1s\", function () {\r",
               "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
               "});"
             ],
@@ -734,11 +734,11 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"TC-051 Status deve ser 404\", function () {\r",
+              "pm.test(\"TC-054 Status deve ser 404\", function () {\r",
               "    pm.response.to.have.status(404);\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-052 Tempo de resposta é menos de 1s\", function () {\r",
+              "pm.test(\"TC-055 Tempo de resposta é menos de 1s\", function () {\r",
               "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
               "});"
             ],
@@ -771,14 +771,14 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"TC-053 Armor deve possuir categoria de armor\", function () {\r",
+              "pm.test(\"TC-056 Armor deve possuir categoria de armor\", function () {\r",
               "    const resposta = pm.response.json();\r",
               "    pm.expect(resposta.equipment_category.index).to.equal(\"armor\");\r",
               "    pm.expect(resposta.equipment_category.name).to.equal(\"Armor\");\r",
               "    pm.expect(resposta.equipment_category.url).to.equal(\"/api/2014/equipment-categories/armor\");\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-054 Desvantagem em stealth condiz com o tipo de armadura\", function(){\r",
+              "pm.test(\"TC-057 Desvantagem em stealth condiz com o tipo de armadura\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    const categoria = resposta.armor_category;\r",
               "    if(categoria === \"Heavy\"){\r",
@@ -792,7 +792,7 @@
               "    }\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-055 Tempo de resposta é menos de 1s\", function () {\r",
+              "pm.test(\"TC-058 Tempo de resposta é menos de 1s\", function () {\r",
               "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
               "});"
             ],
@@ -825,14 +825,14 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"TC-056 Armor deve possuir categoria de armor\", function () {\r",
+              "pm.test(\"TC-059 Armor deve possuir categoria de armor\", function () {\r",
               "    const resposta = pm.response.json();\r",
               "    pm.expect(resposta.equipment_category.index).to.equal(\"armor\");\r",
               "    pm.expect(resposta.equipment_category.name).to.equal(\"Armor\");\r",
               "    pm.expect(resposta.equipment_category.url).to.equal(\"/api/2014/equipment-categories/armor\");\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-057 Desvantagem em stealth condiz com o tipo de armadura\", function(){\r",
+              "pm.test(\"TC-060 Desvantagem em stealth condiz com o tipo de armadura\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    const categoria = resposta.armor_category;\r",
               "    if(categoria === \"Heavy\"){\r",
@@ -846,13 +846,13 @@
               "    }\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-058 Leather Armor possui peso fixo\", function(){\r",
+              "pm.test(\"TC-061 Leather Armor possui peso fixo\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    pm.expect(resposta.weight).to.equal(10);\r",
               "    pm.expect(resposta.weight).to.be.a(\"number\");\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-059 Tempo de resposta é menos de 1s\", function () {\r",
+              "pm.test(\"TC-062 Tempo de resposta é menos de 1s\", function () {\r",
               "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
               "});"
             ],
@@ -885,7 +885,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"TC-060 Dano base da Longsword\", function () {\r",
+              "pm.test(\"TC-063 Dano base da Longsword\", function () {\r",
               "    const resposta = pm.response.json();\r",
               "    const dano = resposta.damage;\r",
               "    pm.expect(dano.damage_dice).to.equal(\"1d8\");\r",
@@ -894,14 +894,14 @@
               "    pm.expect(dano.damage_type.url).to.equal(\"/api/2014/damage-types/slashing\");\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-061 Propriedades da Longsword\", function(){\r",
+              "pm.test(\"TC-064 Propriedades da Longsword\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    const properties = resposta.properties;\r",
               "    const indexes = properties.map(p => p.index);\r",
               "    pm.expect(indexes).to.include(\"versatile\");\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-062 Dano com duas maos da Longsword\", function(){\r",
+              "pm.test(\"TC-065 Dano com duas maos da Longsword\", function(){\r",
               "    const resposta = pm.response.json();\r",
               "    const duasMaos = resposta.two_handed_damage;\r",
               "    pm.expect(duasMaos.damage_dice).to.equal(\"1d10\");\r",
@@ -910,7 +910,7 @@
               "    pm.expect(duasMaos.damage_type.url).to.equal(\"/api/2014/damage-types/slashing\");\r",
               "});\r",
               "\r",
-              "pm.test(\"TC-063 Tempo de resposta é menos de 1s\", function () {\r",
+              "pm.test(\"TC-066 Tempo de resposta é menos de 1s\", function () {\r",
               "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
               "});"
             ],
@@ -945,22 +945,22 @@
             "exec": [
               "const returnal = pm.response.json();\r",
               "\r",
-              "pm.test('TC-064 Status deve ser 200', function ()\r",
+              "pm.test('TC-067 Status deve ser 200', function ()\r",
               "{\r",
               "    pm.response.to.have.status(200);\r",
               "});\r",
               "\r",
-              "pm.test('TC-065 Contagem deve ser 12', function ()\r",
+              "pm.test('TC-068 Contagem deve ser 12', function ()\r",
               "{\r",
               "    pm.expect(returnal.count).to.equal(12);\r",
               "});\r",
               "\r",
-              "pm.test('TC-066 O indice da primeira classe deve ser \"barbarian\"', function ()\r",
+              "pm.test('TC-069 O indice da primeira classe deve ser \"barbarian\"', function ()\r",
               "{\r",
               "    pm.expect(returnal.results[0].index).to.equal(\"barbarian\");\r",
               "});\r",
               "\r",
-              "pm.test('TC-067 Todas as classes devem ter somente index, name e url', function()\r",
+              "pm.test('TC-070 Todas as classes devem ter somente index, name e url', function()\r",
               "{\r",
               "    returnal.results.forEach(function(item)\r",
               "    {\r",
@@ -969,7 +969,7 @@
               "    });\r",
               "});\r",
               "\r",
-              "pm.test('TC-068 O endpoint deve terminar com o mesmo valor do index', function()\r",
+              "pm.test('TC-071 O endpoint deve terminar com o mesmo valor do index', function()\r",
               "{\r",
               "    returnal.results.forEach(function(item)\r",
               "    {\r",
@@ -1026,23 +1026,23 @@
             "exec": [
               "const returnal = pm.response.json();\r",
               "\r",
-              "pm.test('TC-069 Deve possuir o campo spellcasting', function ()\r",
+              "pm.test('TC-072 Deve possuir o campo spellcasting', function ()\r",
               "{\r",
               "    pm.expect(returnal).to.have.property('spellcasting');\r",
               "});\r",
               "\r",
-              "pm.test('TC-070 O campo spellcasting_ability.index deve ser igual ao valor wis', function()\r",
+              "pm.test('TC-073 O campo spellcasting_ability.index deve ser igual ao valor wis', function()\r",
               "{\r",
               "    pm.expect(returnal.spellcasting.spellcasting_ability.index).to.equal('wis');\r",
               "});\r",
               "\r",
-              "pm.test('TC-071 Não deve existir proficiency com index \"all-armor\"', function () \r",
+              "pm.test('TC-074 Não deve existir proficiency com index \"all-armor\"', function () \r",
               "{\r",
               "    const hasHeavyArmor = returnal.proficiencies.some(p => p.index === \"all-armor\");\r",
               "    pm.expect(hasHeavyArmor).to.be.false;\r",
               "});\r",
               "\r",
-              "pm.test('TC-072 Não deve conter saving throws inválidos para a classe clerigo', function () \r",
+              "pm.test('TC-075 Não deve conter saving throws inválidos para a classe clerigo', function () \r",
               "{\r",
               "    const indexes = returnal.saving_throws.map(s => s.index);\r",
               "    const proibidos = ['str', 'dex', 'con', 'int']; // Lista de saving throws proibidos para a classe cleric\r",
@@ -1084,7 +1084,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test('TC-073 POST não deve ser permitido', function () \r",
+              "pm.test('TC-076 POST não deve ser permitido', function () \r",
               "{\r",
               "    pm.expect([404, 405]);\r",
               "});"
@@ -1122,7 +1122,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test('TC-074 DELETE não deve ser permitido', function () \r",
+              "pm.test('TC-077 DELETE não deve ser permitido', function () \r",
               "{\r",
               "    pm.expect([404, 405]);\r",
               "});"
@@ -1163,28 +1163,28 @@
             "exec": [
               "const returnal = pm.response.json();\r",
               "\r",
-              "pm.test('TC-075 Status deve ser 200', function ()\r",
+              "pm.test('TC-078 Status deve ser 200', function ()\r",
               "{\r",
               "    pm.response.to.have.status(200);\r",
               "});\r",
               "\r",
-              "pm.test('TC-076 O campo hit_die deve estar em dentro de um intervalo válido', function ()\r",
+              "pm.test('TC-079 O campo hit_die deve estar em dentro de um intervalo válido', function ()\r",
               "{\r",
               "    pm.expect(returnal.hit_die).to.be.within(6, 12);\r",
               "});\r",
               "\r",
-              "pm.test('TC-077 Deve conter o campo subclasses', function()\r",
+              "pm.test('TC-080 Deve conter o campo subclasses', function()\r",
               "{\r",
               "    pm.expect(returnal).to.have.property('subclasses');\r",
               "});\r",
               "\r",
-              "pm.test('TC-078 Deve conter exatamente dois saving throws', function()\r",
+              "pm.test('TC-081 Deve conter exatamente dois saving throws', function()\r",
               "{\r",
               "    const indexes = returnal.saving_throws.map(s => s.index);\r",
               "    pm.expect(indexes).to.have.lengthOf(2);\r",
               "});\r",
               "\r",
-              "pm.test('TC-079 Deve conter o campo prificiency_choices não vazio', function()\r",
+              "pm.test('TC-082 Deve conter o campo prificiency_choices não vazio', function()\r",
               "{\r",
               "    pm.expect(returnal.proficiency_choices).to.not.be.empty;\r",
               "});"
@@ -1225,18 +1225,18 @@
             "exec": [
               "const returnal = pm.response.json();\r",
               "\r",
-              "pm.test('TC-080 Não deve possuir o campo spellcasting', function ()\r",
+              "pm.test('TC-083 Não deve possuir o campo spellcasting', function ()\r",
               "{\r",
               "    pm.expect(returnal).to.not.have.property('spellcasting');\r",
               "});\r",
               "\r",
-              "pm.test('TC-081 Deve existir proficiency com index \"all-armor\"', function () \r",
+              "pm.test('TC-084 Deve existir proficiency com index \"all-armor\"', function () \r",
               "{\r",
               "    const hasHeavyArmor = returnal.proficiencies.some(p => p.index === \"all-armor\");\r",
               "    pm.expect(hasHeavyArmor).to.be.true;\r",
               "});\r",
               "\r",
-              "pm.test('TC-082 Não deve conter saving throws inválidos para a classe guerreiro', function () \r",
+              "pm.test('TC-085 Não deve conter saving throws inválidos para a classe guerreiro', function () \r",
               "{\r",
               "    const indexes = returnal.saving_throws.map(s => s.index);\r",
               "    const proibidos = ['dex', 'int', 'wis', 'cha']; // Lista de saving throws proibidos para a classe cleric\r",
@@ -1278,7 +1278,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test('TC-083 Deve retornar 404 para uma classe inexistente', function()\r",
+              "pm.test('TC-086 Deve retornar 404 para uma classe inexistente', function()\r",
               "{\r",
               "    pm.response.to.have.status(404);\r",
               "});"
@@ -1317,7 +1317,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"TC-084 Tempo de resposta entre 100ms e 1000ms\", function () {\r",
+              "pm.test(\"TC-087 Tempo de resposta entre 100ms e 1000ms\", function () {\r",
               "    let tempo = pm.response.responseTime;\r",
               "    pm.expect(tempo).to.be.within(100, 1000);\r",
               "});"
